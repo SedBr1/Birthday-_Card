@@ -1,0 +1,77 @@
+body{
+  font-family: "Comic Sans Ms", cursive, sans-serif;
+  background: linear gradient (45deg, #ffafbd, #ffc3a0);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card{
+  width: 400px;
+  height: 500px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+ .card-front, .card-inside {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.card-front {
+    background: #ff6b6b;
+    color: white;
+}
+
+.card-inside {
+    background: white;
+    transform: rotateY(180deg);
+}
+
+.envelope {
+    font-size: 80px;
+    margin: 20px;
+    animation: bounce 2s infinite;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.message {
+    text-align: center;
+}
+#surpriseBtn {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+#surpriseBtn:hover {
+    background: #ff5252;
+    transform: scale(1.1);
+    }
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.flip {
+    transform: rotateY(180deg);
+    transition: transform 0.8s;
+}
