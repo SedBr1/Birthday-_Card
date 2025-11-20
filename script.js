@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const surpriseBtn = document.getElementById('surpriseBtn');
     const surpriseMessage = document.getElementById('surpriseMessage');
     
-    // Customize these with your personal messages!
     const surprises = [
         "You're an amazing personality! You are not prejudiced. The world would be a good place with people like you",
         "I was going to add a photo from the National assembly but my coding skills are being stretched! I remember those were the days! 🌟",
@@ -21,3 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         surpriseMessage.style.opacity = '0';
         surpriseMessage.style.transform = 'translateY(20px)';
+        }, 10);
+    });
+});
