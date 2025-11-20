@@ -1,32 +1,25 @@
 <!DOCTYPE html>
-<html lang=en>
-    <head>
-      <meta charset = "UTF-8"/>
-      <Title>Happy Birthday, Madam Ambassador (Eunice) </Title>
-      <link rel="stylesheet" href="style.css"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-  <body>
-    <div class = "card">
-      <div class = "card_front">
-           <div class="photos">
-                <img src="https://drive.google.com/uc?export=view&id=1agv4nrlrQTJQANPsE43XmWniI6Fdj7Xt" > 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <div class="card-inside">
+            <div class="message">
+                <h2>Happy Birthday! 🎉</h2>
+                <button id="surpriseBtn">Click for a Surprise!</button>
+                <div id="surpriseMessage" class="hidden">
+                    <!-- Message will appear here -->
+                </div>
             </div>
-        <h1>Open your card</h1>
-        <div class="envelope">&#128231;</div>
-      </div>
-      <div class = "Card inside here">
-        <div class= "message">
-          <h1>Its your birthday</h1>
-          <p>You are an amazing person who shows up whether others show up or not</p>
-          <button id="surpriseBtn">Click for a Surprise!</button>
-                <div id="surpriseMessage" class="hidden"></div>
-            </div>
-           
         </div>
     </div>
-
-    <script src="script.js"</script> 
-        
-  </body>
-  </html>
+    
+    <!-- Make sure this script tag is at the BOTTOM of the body -->
+    <script src="script.js"></script>
+</body>
+</html>
