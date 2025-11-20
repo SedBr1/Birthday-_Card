@@ -1,4 +1,11 @@
+console.log("Script is loading!");
+
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM is fully loaded!");
+    
+    const surpriseBtn = document.getElementById('surpriseBtn');
+    console.log("Found button:", surpriseBtn);
+    document.addEventListener('DOMContentLoaded', function() {
     const surpriseBtn = document.getElementById('surpriseBtn');
     const surpriseMessage = document.getElementById('surpriseMessage');
     
