@@ -1,18 +1,23 @@
-const card = document.querySelector('.card');
-const cardFront = document.querySelector('.card-front');
-const cardInside = document.querySelector('.card-inside');
-
-card.addEventListener('click', function() {
-    // Toggle the hidden classes
-    cardFront.classList.toggle('hidden');
-    cardInside.classList.toggle('hidden');
-});
-
-
-const surpriseBtn = document.getElementById('surpriseBtn');
-const surpriseMessage = document.getElementById('surpriseMessage');
-
-surpriseBtn.addEventListener('click', function(e) {
-    e.stopPropagation(); // Prevents card flip when clicking button
-    surpriseMessage.classList.toggle('hidden');
-});
+document.addEventListener('DOMContentLoaded', function() {
+    const surpriseBtn = document.getElementById('surpriseBtn');
+    const surpriseMessage = document.getElementById('surpriseMessage');
+    
+    // Customize these with your personal messages!
+    const surprises = [
+        "You're an amazing personality! You are not prejudiced. The world would be a good place with people like you",
+        "I was going to add a photo from the National assembly but my coding skills are being stretched! I remember those were the days! 🌟",
+        "You have a kind 💝",
+        "I like you most times, except when you make me mad. Like that one time during UNLEASH ✨",
+        "Glad to have met you 🤝"
+    ];
+    surpriseBtn.addEventListener('click', function() {
+        
+        const randomSurprise = surprises[Math.floor(Math.random() * surprises.length)];
+        
+       
+        surpriseMessage.textContent = randomSurprise;
+        surpriseMessage.classList.remove('hidden');
+        
+        
+        surpriseMessage.style.opacity = '0';
+        surpriseMessage.style.transform = 'translateY(20px)';
