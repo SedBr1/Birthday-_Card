@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,6 +92,217 @@
             });
             
             console.log("Event listener attached!");
+        });
+    </script>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Card</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, #ffafbd, #ffc3a0);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+        
+        #surpriseMessage {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 10px;
+            border: 2px dashed #ff6b6b;
+            font-size: 18px;
+        }
+        
+        .photo-gallery {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dotted #ffc3a0;
+        }
+        
+        .photos {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .photo {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #ff6b6b;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .photo:hover {
+            transform: scale(1.1);
+        }
+        
+        h1 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        
+        h3 {
+            color: #ff8e6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Happy Birthday! 🎉</h1>
+        <p>Click the button for a surprise!</p>
+        
+        <button id="surpriseBtn">Click for a Surprise! 🎁</button>
+        
+        <div id="surpriseMessage" class="hidden">
+            Message will appear here!
+        </div>
+        
+        <div class="photo-gallery">
+            <h3>Our Favorite Memories 📸</h3>
+            <div class="photos">
+                <!-- REPLACE THESE WITH YOUR ACTUAL PHOTOS -->
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=150&h=150&fit=crop" alt="Celebration" class="photo">
+                <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=150&h=150&fit=crop" alt="Friends" class="photo">
+                <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=150&h=150&fit=crop" alt="Party" class="photo">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log("Enhanced birthday card loaded!");
+        
+        // Sound effects function
+        function playSound(soundUrl) {
+            try {
+                const audio = new Audio(soundUrl);
+                audio.volume = 0.3; // Lower volume to be gentle
+                audio.play().catch(e => console.log("Sound play prevented by browser:", e));
+            } catch (error) {
+                console.log("Sound error:", error);
+            }
+        }
+        
+        // Free sound URLs (you can replace these)
+        const sounds = {
+            celebration: 'https://assets.mixkit.co/sfx/preview/mixkit-balloon-pop-sound-2256.mp3',
+            party: 'https://assets.mixkit.co/sfx/preview/mixkit-party-horn-sound-3023.mp3',
+            magic: 'https://assets.mixkit.co/sfx/preview/mixkit-magic-sweep-game-trophy-257.mp3',
+            confetti: 'https://assets.mixkit.co/sfx/preview/mixkit-confetti-cannon-soft-sound-3097.mp3'
+        };
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded!");
+            
+            const button = document.getElementById('surpriseBtn');
+            const message = document.getElementById('surpriseMessage');
+            const photos = document.querySelectorAll('.photo');
+            
+            console.log("Elements found:", { button, message, photos: photos.length });
+            
+            // Personalize these messages!
+            const surprises = [
+                "You're the most amazing friend! 🥳",
+                "I'm so grateful for our friendship! 💝",
+                "You always know how to make me laugh! 😂",
+                "Your kindness inspires me every day! ✨",
+                "Thanks for all the wonderful memories! 🌟",
+                "You make the world a better place! 🌎"
+            ];
+            
+            // Button click event
+            button.addEventListener('click', function() {
+                console.log("Surprise button clicked!");
+                
+                // Play random celebration sound
+                const soundKeys = Object.keys(sounds);
+                const randomSound = soundKeys[Math.floor(Math.random() * soundKeys.length)];
+                playSound(sounds[randomSound]);
+                
+                // Show random message
+                const randomMessage = surprises[Math.floor(Math.random() * surprises.length)];
+                message.textContent = randomMessage;
+                message.classList.remove('hidden');
+                
+                // Add celebration animation to message
+                message.style.animation = 'none';
+                setTimeout(() => {
+                    message.style.animation = 'bounce 0.5s';
+                }, 10);
+                
+                console.log("Showing message:", randomMessage);
+            });
+            
+            // Add click sounds to photos
+            photos.forEach(photo => {
+                photo.addEventListener('click', function() {
+                    playSound(sounds.magic);
+                    this.style.borderColor = '#8a2be2'; // Purple border on click
+                    setTimeout(() => {
+                        this.style.borderColor = '#ff6b6b'; // Back to original
+                    }, 1000);
+                });
+            });
+            
+            // Add bounce animation to CSS
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes bounce {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            console.log("All event listeners attached!");
         });
     </script>
 </body>
