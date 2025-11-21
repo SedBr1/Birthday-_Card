@@ -399,23 +399,7 @@
             font-size: 18px;
         }
         
-        .sound-buttons {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px dotted #ffc3a0;
-        }
-        
-        .sound-buttons h3 {
-            color: #ff6b6b;
-            margin-bottom: 15px;
-        }
-        
-        .sound-btn {
-            background: #4CAF50 !important;
-            padding: 12px 20px !important;
-            font-size: 16px !important;
-            margin: 8px !important;
-        }
+      
         
         @keyframes bounce {
             0%, 100% { transform: scale(1); }
@@ -439,47 +423,15 @@
             Message will appear here!
         </div>
         
-        <!-- Sound buttons section - THIS WILL DEFINITELY APPEAR -->
-        <div class="sound-buttons">
-            <h3>Sound Effects 🎵</h3>
-            <button class="sound-btn" onclick="playSound('celebration')">🎊 Celebration</button>
-            <button class="sound-btn" onclick="playSound('party')">🎉 Party Horn</button>
-            <button class="sound-btn" onclick="playSound('magic')">✨ Magic</button>
-            <button class="sound-btn" onclick="playSound('confetti')">🎆 Confetti</button>
-        </div>
+        
+       
     </div>
 
     <script>
         console.log("Birthday card with visible sound buttons loaded!");
-        
-        // Simple sound function
-        function playSound(soundName) {
-            console.log("Attempting to play:", soundName);
             
-            // Use free sound URLs that should work
-            const sounds = {
-                celebration: 'https://assets.mixkit.co/sfx/preview/mixkit-balloon-pop-sound-2256.mp3',
-                party: 'https://assets.mixkit.co/sfx/preview/mixkit-party-horn-sound-3023.mp3',
-                magic: 'https://assets.mixkit.co/sfx/preview/mixkit-magic-sweep-game-trophy-257.mp3',
-                confetti: 'https://assets.mixkit.co/sfx/preview/mixkit-confetti-cannon-soft-sound-3097.mp3'
-            };
             
-            try {
-                const audio = new Audio(sounds[soundName]);
-                audio.volume = 0.3;
-                audio.play().then(() => {
-                    console.log("Sound played successfully:", soundName);
-                }).catch(error => {
-                    console.log("Could not play sound:", error);
-                    // Fallback: Show a visual effect instead
-                    showVisualEffect(soundName);
-                });
-            } catch (error) {
-                console.log("Sound error:", error);
-                showVisualEffect(soundName);
-            }
         }
-        
         // Visual fallback if sound doesn't work
         function showVisualEffect(soundName) {
             const message = document.getElementById('surpriseMessage');
@@ -529,8 +481,7 @@
             button.addEventListener('click', function() {
                 console.log("Surprise button clicked!");
                 
-                // Play celebration sound
-                playSound('celebration');
+               
                 
                 // Show random message
                 const randomMessage = surprises[Math.floor(Math.random() * surprises.length)];
@@ -543,8 +494,6 @@
             console.log("All event listeners attached!");
         });
         
-        // Make playSound available globally for the buttons
-        window.playSound = playSound;
     </script>
 </body>
 </html>
