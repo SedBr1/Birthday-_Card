@@ -98,7 +98,7 @@
 </html>
 -->
 
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -243,6 +243,213 @@
         </div>
     </div>
  <script>
+        console.log("Birthday card with visible sound buttons loaded!");
+        
+        // Simple sound function
+        function playSound(soundName) {
+            console.log("Attempting to play:", soundName);
+            
+            // Use free sound URLs that should work
+            const sounds = {
+                celebration: 'https://assets.mixkit.co/sfx/preview/mixkit-balloon-pop-sound-2256.mp3',
+                party: 'https://assets.mixkit.co/sfx/preview/mixkit-party-horn-sound-3023.mp3',
+                magic: 'https://assets.mixkit.co/sfx/preview/mixkit-magic-sweep-game-trophy-257.mp3',
+                confetti: 'https://assets.mixkit.co/sfx/preview/mixkit-confetti-cannon-soft-sound-3097.mp3'
+            };
+            
+            try {
+                const audio = new Audio(sounds[soundName]);
+                audio.volume = 0.3;
+                audio.play().then(() => {
+                    console.log("Sound played successfully:", soundName);
+                }).catch(error => {
+                    console.log("Could not play sound:", error);
+                    // Fallback: Show a visual effect instead
+                    showVisualEffect(soundName);
+                });
+            } catch (error) {
+                console.log("Sound error:", error);
+                showVisualEffect(soundName);
+            }
+        }
+        
+        // Visual fallback if sound doesn't work
+        function showVisualEffect(soundName) {
+            const message = document.getElementById('surpriseMessage');
+            const effects = {
+                celebration: "🎈 Popping balloons!",
+                party: "🎉 Party horn tooting!",
+                magic: "✨ Magic sparkles!",
+                confetti: "🎆 Confetti explosion!"
+            };
+            
+            message.textContent = effects[soundName] || "Sound effect!";
+            message.classList.remove('hidden');
+            
+            // Add bounce animation
+            message.style.animation = 'none';
+            setTimeout(() => {
+                message.style.animation = 'bounce 0.5s';
+            }, 10);
+            
+            // Auto-hide after 3 seconds
+            setTimeout(() => {
+                message.classList.add('hidden');
+            }, 3000);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded - sound buttons should be visible!");
+            
+            const button = document.getElementById('surpriseBtn');
+            const message = document.getElementById('surpriseMessage');
+            
+            console.log("Surprise button found:", !!button);
+            console.log("Message div found:", !!message);
+            console.log("Sound buttons should be visible on page");
+            
+            // Personalize these messages!
+            const surprises = [
+                "You're the most amazing friend! 🥳",
+                "I'm so grateful for our friendship! 💝",
+                "You always know how to make me laugh! 😂",
+                "Your kindness inspires me every day! ✨",
+                "Thanks for all the wonderful memories! 🌟",
+                "You make the world a better place! 🌎"
+            ];
+            
+            // Button click event
+            button.addEventListener('click', function() {
+                console.log("Surprise button clicked!");
+                
+                // Play celebration sound
+                playSound('celebration');
+                
+                // Show random message
+                const randomMessage = surprises[Math.floor(Math.random() * surprises.length)];
+                message.textContent = randomMessage;
+                message.classList.remove('hidden');
+                
+                console.log("Showing message:", randomMessage);
+            });
+            
+            console.log("All event listeners attached!");
+        });
+        
+        // Make playSound available globally for the buttons
+        window.playSound = playSound;
+    </script>
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Card</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, #ffafbd, #ffc3a0);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+        
+        #surpriseMessage {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 10px;
+            border: 2px dashed #ff6b6b;
+            font-size: 18px;
+        }
+        
+        .sound-buttons {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dotted #ffc3a0;
+        }
+        
+        .sound-buttons h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+        
+        .sound-btn {
+            background: #4CAF50 !important;
+            padding: 12px 20px !important;
+            font-size: 16px !important;
+            margin: 8px !important;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        h1 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Happy Birthday! 🎉</h1>
+        <p>Click the button for a surprise with sound!</p>
+        
+        <button id="surpriseBtn">Click for a Surprise! 🎁</button>
+        
+        <div id="surpriseMessage" class="hidden">
+            Message will appear here!
+        </div>
+        
+        <!-- Sound buttons section - THIS WILL DEFINITELY APPEAR -->
+        <div class="sound-buttons">
+            <h3>Sound Effects 🎵</h3>
+            <button class="sound-btn" onclick="playSound('celebration')">🎊 Celebration</button>
+            <button class="sound-btn" onclick="playSound('party')">🎉 Party Horn</button>
+            <button class="sound-btn" onclick="playSound('magic')">✨ Magic</button>
+            <button class="sound-btn" onclick="playSound('confetti')">🎆 Confetti</button>
+        </div>
+    </div>
+
+    <script>
         console.log("Birthday card with visible sound buttons loaded!");
         
         // Simple sound function
