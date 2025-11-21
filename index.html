@@ -1,59 +1,97 @@
-<!--
-<!DOCTYPE html>
-<html lang=en>
-    <head>
-      <meta charset = "UTF-8"/>
-      <Title>Happy Birthday, Madam Ambassador (Eunice) </Title>
-      <link rel="stylesheet" href="style.css"/>
-      
-    </head>
-  <body>
-    <div class = "card">
-      <div class = "card_front">
-        <h1>Open your card</h1>
-        <div class="envelope">&#128231;</div>
-      </div>
-      <div class = "Card inside here">
-        <div class= "message">
-          <h1>Its your birthday</h1>
-          <p>You are an amazing person who shows up whether others show up or not</p>
-          <button id="surpriseBtn">Click for a Surprise!</button>
-                <div id="surpriseMessage" class="hidden"></div>
-            </div>
-            <div class="photos">
-                <img src="https://drive.google.com/uc?export=view&id=1agv4nrlrQTJQANPsE43XmWniI6Fdj7Xt" > 
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"</script> 
-        
-  </body>
-  </html>
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Card</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ffafbd, #ffc3a0);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        
+        button:hover {
+            background: #ff5252;
+        }
+        
+        #surpriseMessage {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 10px;
+            border: 2px dashed #ff6b6b;
+        }
+    </style>
 </head>
 <body>
     <div class="card">
-        <div class="card-inside">
-            <div class="message">
-                <h2>Happy Birthday! 🎉</h2>
-                <button id="surpriseBtn">Click for a Surprise!</button>
-                <div id="surpriseMessage" class="hidden">
-                    <!-- Message will appear here -->
-                </div>
-            </div>
+        <h1>Happy Birthday! 🎉</h1>
+        <button id="surpriseBtn">Click for a Surprise!</button>
+        <div id="surpriseMessage" class="hidden">
+            Message will appear here!
         </div>
     </div>
-    
-    <!-- Make sure this script tag is at the BOTTOM of the body -->
-    <script src="script.js"></script>
+
+    <script>
+        console.log("Simple script started!");
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM loaded!");
+            
+            const button = document.getElementById('surpriseBtn');
+            const message = document.getElementById('surpriseMessage');
+            
+            console.log("Button found:", button);
+            console.log("Message div found:", message);
+            
+            const surprises = [
+                "You're an amazing friend! 🥳",
+                "I appreciate you so much! 💝", 
+                "You always know how to make me laugh! 😂",
+                "Thanks for being you! ✨"
+            ];
+            
+            button.addEventListener('click', function() {
+                console.log("Button clicked!");
+                
+                const randomMessage = surprises[Math.floor(Math.random() * surprises.length)];
+                message.textContent = randomMessage;
+                message.classList.remove('hidden');
+                
+                console.log("Showing message:", randomMessage);
+            });
+            
+            console.log("Event listener attached!");
+        });
+    </script>
 </body>
 </html>
