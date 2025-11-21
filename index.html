@@ -435,12 +435,6 @@
         // Visual fallback if sound doesn't work
         function showVisualEffect(soundName) {
             const message = document.getElementById('surpriseMessage');
-            const effects = {
-                celebration: "🎈 Popping balloons!",
-                party: "🎉 Party horn tooting!",
-                magic: "✨ Magic sparkles!",
-                confetti: "🎆 Confetti explosion!"
-            };
             
             message.textContent = effects[soundName] || "Sound effect!";
             message.classList.remove('hidden');
